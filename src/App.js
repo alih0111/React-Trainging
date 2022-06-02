@@ -15,6 +15,7 @@ import Wrapper from "./components/hoc/Wrapper";
 import ClickCounter from "./components/hocExample/ClickCounter";
 import HOverCounter from "./components/hocExample/HoverCounter";
 import WithCount from "./components/hoc/WithCount";
+import ParentCom from "./components/PureMemoComp/ParentComp";
 
 // const App = () => {
 //   // const [number, setnumber] = useState(0);
@@ -128,9 +129,9 @@ class App extends Component {
           onDec={this.decHandler}
           onChange={this.changeHandler}
         /> */}
-        <ClickCounter nameC="Ali-Clicked"/>
-        <HOverCounter nameH="Ali-Hovered"/>
-        {/* <WithCount/> */}
+        {/* <ClickCounter nameC="Ali-Clicked"/>
+        <HOverCounter nameH="Ali-Hovered"/> */}
+        <ParentCom/>
       </>
     );
   }
