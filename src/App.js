@@ -11,6 +11,11 @@ import ClassCounter from "./components/ClassCounter";
 import FunctionalCounter from "./components/FunctionalCounter";
 import ClassTimer from "./components/ClassTimer";
 import FunctionalTimer from "./components/FunctionalTimer";
+import Wrapper from "./components/hoc/Wrapper";
+import ClickCounter from "./components/hocExample/ClickCounter";
+import HOverCounter from "./components/hocExample/HoverCounter";
+import WithCount from "./components/hoc/WithCount";
+
 // const App = () => {
 //   // const [number, setnumber] = useState(0);
 
@@ -101,14 +106,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container" id="title">
-        <button
+      <>
+        {/* <button
           onClick={() => {
             this.setState({ isShow: !this.state.isShow });
           }}
         >
           {this.state.isShow ? "hide" : "show"}
-        </button>
+        </button> */}
         {/* {this.state.isShow && <ClassTimer/>} */}
         {/* {this.state.isShow && <FunctionalTimer />} */}
         {/* <ClassCounter/> */}
@@ -123,10 +128,13 @@ class App extends Component {
           onDec={this.decHandler}
           onChange={this.changeHandler}
         /> */}
-      </div>
+        <ClickCounter nameC="Ali-Clicked"/>
+        <HOverCounter nameH="Ali-Hovered"/>
+        {/* <WithCount/> */}
+      </>
     );
   }
 }
-export default App;
+export default Wrapper(App,'container');
 export const userName = "ali";
 export const appName = "react";
