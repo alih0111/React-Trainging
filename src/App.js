@@ -4,18 +4,22 @@
 // import React, { useState } from "react";
 import "./index.css";
 import "./App.css";
-import Navbar from "./components/Navbar/NavBar";
-import ProductList from "./components/ProductList";
+// import Navbar from "./components/Navbar/NavBar";
+// import ProductList from "./components/ProductList";
 import { Component } from "react";
-import ClassCounter from "./components/ClassCounter";
-import FunctionalCounter from "./components/FunctionalCounter";
-import ClassTimer from "./components/ClassTimer";
-import FunctionalTimer from "./components/FunctionalTimer";
+// import ClassCounter from "./components/ClassCounter";
+// import FunctionalCounter from "./components/FunctionalCounter";
+// import ClassTimer from "./components/ClassTimer";
+// import FunctionalTimer from "./components/FunctionalTimer";
 import Wrapper from "./components/hoc/Wrapper";
-import ClickCounter from "./components/hocExample/ClickCounter";
-import HOverCounter from "./components/hocExample/HoverCounter";
-import WithCount from "./components/hoc/WithCount";
-import ParentCom from "./components/PureMemoComp/ParentComp";
+// import ClickCounter from "./components/hocExample/ClickCounter";
+// import HOverCounter from "./components/hocExample/HoverCounter";
+// import WithCount from "./components/hoc/WithCount";
+// import ParentCom from "./components/PureMemoComp/ParentComp";
+// import ClassRef from "./components/ref/ClassRef";
+// import FunctionalRef from "./components/ref/FunctionalRef";
+import ExRef from "./components/ref/useRef";
+
 
 // const App = () => {
 //   // const [number, setnumber] = useState(0);
@@ -131,7 +135,10 @@ class App extends Component {
         /> */}
         {/* <ClickCounter nameC="Ali-Clicked"/>
         <HOverCounter nameH="Ali-Hovered"/> */}
-        <ParentCom/>
+        {/* <ParentCom/> */}
+        {/* <ClassRef/> */}
+        {/* <FunctionalRef/> */}
+        <ExRef/>
       </>
     );
   }
