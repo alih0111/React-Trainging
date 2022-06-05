@@ -1,25 +1,28 @@
 // import Product from "./components/Product/product";
 // import Counter from "./components/Product/HookCounter";
 // import CCounter from "./components/Product/ClassCounter";
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import "./App.css";
-// import Navbar from "./components/Navbar/NavBar";
-// import ProductList from "./components/ProductList";
+import Navbar from "./components/Navbar/NavBar";
+import ProductList from "./components/ProductList";
 import { Component } from "react";
 // import ClassCounter from "./components/ClassCounter";
 // import FunctionalCounter from "./components/FunctionalCounter";
 // import ClassTimer from "./components/ClassTimer";
 // import FunctionalTimer from "./components/FunctionalTimer";
 import Wrapper from "./components/hoc/Wrapper";
+import CounterProvider from "./components/Context/CounterProvider";
+import CounterOne from "./components/Context/CounterOne";
 // import ClickCounter from "./components/hocExample/ClickCounter";
 // import HOverCounter from "./components/hocExample/HoverCounter";
 // import WithCount from "./components/hoc/WithCount";
 // import ParentCom from "./components/PureMemoComp/ParentComp";
 // import ClassRef from "./components/ref/ClassRef";
 // import FunctionalRef from "./components/ref/FunctionalRef";
-import ExRef from "./components/ref/useRef";
-
+// import ExRef from "./components/ref/useRef";
+// import CounterReducer from "./components/Reducer/CountReducer"
+import CounterReducerTwo from "./components/Reducer/CountReducerTwo"
 
 // const App = () => {
 //   // const [number, setnumber] = useState(0);
@@ -30,6 +33,8 @@ import ExRef from "./components/ref/useRef";
 
 //   return <ProductList />;
 // };
+
+export const UserContext = React.createContext();
 
 class App extends Component {
   state = {
@@ -57,7 +62,9 @@ class App extends Component {
   };
   removeHandler = (id) => {
     const filtredProducts = this.state.products.filter((p) => p.id !== id);
-    this.setState({ products: filtredProducts });
+    this.setState({
+      products: filtredProducts,
+    });
   };
   IncHandler = (id) => {
     // const productss = [...this.state.products];
@@ -68,25 +75,33 @@ class App extends Component {
     const index = this.state.products.findIndex((item) => item.id === id);
     console.log(index);
     // 2. clone the selected index and update qty
-    const product = { ...this.state.products[index] };
+    const product = {
+      ...this.state.products[index],
+    };
     product.quantity++;
     // 3. update product
     const products = [...this.state.products];
     products[index] = product;
-    this.setState({ products });
+    this.setState({
+      products,
+    });
   };
   decHandler = (id) => {
     // const productss = [...this.state.products];
     // const selectedItem = productss.find((p) => p.id === id);
     const index = this.state.products.findIndex((item) => item.id === id);
-    const product = { ...this.state.products[index] };
+    const product = {
+      ...this.state.products[index],
+    };
     if (product.quantity === 1) {
       this.removeHandler(id);
     } else {
       product.quantity--;
       const products = [...this.state.products];
       products[index] = product;
-      this.setState({ products });
+      this.setState({
+        products,
+      });
     }
   };
   changeHandler = (event, id) => {
@@ -96,14 +111,17 @@ class App extends Component {
     // this.setState({ products: productss });
     const index = this.state.products.findIndex((item) => item.id === id);
     // 2. clone the selected index and update qty
-    const product = { ...this.state.products[index] };
+    const product = {
+      ...this.state.products[index],
+    };
     product.title = event.target.value;
     // 3. update product
     const products = [...this.state.products];
     products[index] = product;
-    this.setState({ products });
+    this.setState({
+      products,
+    });
   };
-
   componentDidUpdate(prevProps, prevState) {
     console.log("App.js componentDidUpdate");
     console.log("App.js", prevState);
@@ -113,36 +131,41 @@ class App extends Component {
     return (
       <>
         {/* <button
-          onClick={() => {
-            this.setState({ isShow: !this.state.isShow });
-          }}
-        >
-          {this.state.isShow ? "hide" : "show"}
-        </button> */}
-        {/* {this.state.isShow && <ClassTimer/>} */}
-        {/* {this.state.isShow && <FunctionalTimer />} */}
-        {/* <ClassCounter/> */}
-        {/* <FunctionalCounter/> */}
-        {/* <Navbar
-          totalItem={this.state.products.filter((p) => p.quantity > 0).length}
-        />
-        <ProductList
-          products={this.state.products}
-          onRemove={this.removeHandler}
-          onInc={this.IncHandler}
-          onDec={this.decHandler}
-          onChange={this.changeHandler}
-        /> */}
+                  onClick={() => {
+                    this.setState({ isShow: !this.state.isShow });
+                  }}
+                >
+                  {this.state.isShow ? "hide" : "show"}
+                </button> */}{" "}
+        {/* {this.state.isShow && <ClassTimer/>} */}{" "}
+        {/* {this.state.isShow && <FunctionalTimer />} */}{" "}
+        {/* <ClassCounter/> */} {/* <FunctionalCounter/> */}{" "}
+        {/* <UserContext.Provider value={'ali'}>
+          <Navbar
+            totalItem={this.state.products.filter((p) => p.quantity > 0).length}
+          />{" "}
+          <ProductList
+            products={this.state.products}
+            onRemove={this.removeHandler}
+            onInc={this.IncHandler}
+            onDec={this.decHandler}
+            onChange={this.changeHandler}
+          />{" "}
+        </UserContext.Provider>{" "} */}
         {/* <ClickCounter nameC="Ali-Clicked"/>
-        <HOverCounter nameH="Ali-Hovered"/> */}
-        {/* <ParentCom/> */}
-        {/* <ClassRef/> */}
-        {/* <FunctionalRef/> */}
-        <ExRef/>
+                <HOverCounter nameH="Ali-Hovered"/> */}{" "}
+        {/* <ParentCom/> */} {/* <ClassRef/> */} {/* <FunctionalRef/> */}{" "}
+        {/* <ExRef/> */}{" "}
+        <CounterProvider>
+          <p>welcom</p>
+          {/* <CounterOne /> */}
+          {/* <CounterReducer/> */}
+          <CounterReducerTwo/>
+        </CounterProvider>
       </>
     );
   }
 }
-export default Wrapper(App,'container');
+export default Wrapper(App, "container");
 export const userName = "ali";
 export const appName = "react";
